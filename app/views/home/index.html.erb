@@ -1,0 +1,21 @@
+<%= form_for :filter, method: :get do |f| %>
+  <%= f.label :place %>
+  <%= f.text_field :place, placeholder: "London", value: @place %> <br>
+  <%= f.submit 'Send' %>
+<% end %>
+
+<h1>
+  <%= @today.day %>
+  <small><%= cloud_condition @today.clouds %></small>
+  <small><%= link_to :details, details_path(@city.name, @today.dt) %></small>
+</h1>
+<h2><%= @city.name.titleize %></h2>
+
+<% @rest.each do |day| %>
+  <dl>
+    <dt><%= day.date.strftime("%A %d") %> - <%= link_to :details, details_path(@city.name, day.dt) %></dt>
+    <dd>At Day: <%= day.day %></dd>
+    <dd><%= cloud_condition day.clouds %></dd>
+    <dd>At Night:  <%= day.night %></dd>
+  </dl>
+<% end %>

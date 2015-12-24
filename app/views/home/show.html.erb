@@ -1,0 +1,45 @@
+<h1>Weather details for <%= @day.date.strftime("%A %d") %> in <%= @city.name %></h1>
+
+<fieldset>
+  <legend>
+    Around the day
+  </legend>
+  <dl>
+    <dt>At Morning:</dt>
+    <dd><%= @day.morning %> °C</dd>
+    <dt>At Day:</dt>
+    <dd><%= @day.day %> °C</dd>
+    <dt>At Evening:</dt>
+    <dd><%= @day.evening %> °C</dd>
+    <dt>At Night:</dt>
+    <dd><%= @day.night %> °C</dd>
+  </dl>
+</fieldset>
+<br>
+<fieldset>
+  <legend>Max and Min</legend>
+  <dl>
+    <dt>Max:</dt>
+    <dd><%= @day.max %> °C</dd>
+    <dt>Min:</dt>
+    <dd><%= @day.min %> °C</dd>
+  </dl>
+</fieldset>
+<br>
+<fieldset>
+  <legend>Aditional Weather Information</legend>
+  <dl>
+    <dt>Atmospheric pressure:</dt>
+    <dd><%= @day.pressure %> hPa</dd>
+    <dt>Humidity</dt>
+    <dd><%= @day.humidity %> %</dd>
+    <dt>Wind:</dt>
+    <dd><%= @day.speed %> meter/sec - <%= @day.deg %> degrees</dd>
+    <dt>Weather condition:</dt>
+    <dd>
+      <% @day.weather.each do |weather| %>
+        <%= weather['main'] %> - <%= weather['description'] %> <br>
+      <% end %>
+    </dd>
+  </dl>
+</fieldset>
